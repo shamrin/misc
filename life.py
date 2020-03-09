@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import Counter
 import os
 import time
 
@@ -16,11 +16,7 @@ def neighbor_cells(cell):
 
 
 def advance(board):
-    neighbors = defaultdict(int)
-    for c in board:
-        for nc in neighbor_cells(c):
-            neighbors[nc] += 1
-
+    neighbors = Counter(neighbor for c in board for neighbor in neighbor_cells(c))
     return {c for c, n in neighbors.items() if n == 3 or (n == 2 and c in board)}
 
 
