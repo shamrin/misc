@@ -29,20 +29,17 @@ def draw(board):
         print()
 
 
-glider = """\
+glider = """
 _x_
 __x
 xxx
 """
 
-board = set()
-for y, line in enumerate(glider.strip().split("\n")):
-    for x, char in enumerate(line):
-        if char == "x":
-            board.add((x, y))
+glider = glider.strip().split("\n")
 
+b = set((x, y) for y, line in enumerate(glider) for x, c in enumerate(line) if c == "x")
 while True:
     os.system("clear")
-    draw(board)
+    draw(b)
     time.sleep(0.1)
-    board = advance(board)
+    b = advance(b)
