@@ -21,12 +21,9 @@ def advance(board):
 
 
 def draw(board):
-    maxx = max(x for (x, y) in board)
-    maxy = max(y for (x, y) in board)
-    for y in range(0, maxy + 1):
-        for x in range(0, maxx + 1):
-            print("x" if (x, y) in board else " ", end="")
-        print()
+    maxx, maxy = 80, 24
+    for y in range(maxy):
+        print("".join("x" if (x, y) in board else " " for x in range(maxx)))
 
 
 glider = """
